@@ -1,0 +1,28 @@
+body {
+    font-size: 20px;
+}
+#avatar {
+    text-align: center;
+    border-radius: 5px;
+}
+#userName {
+    text-align: center;
+}
+#bio {
+    text-align: center;
+}
+img {
+    width: 150px;
+    height: 150px;
+}
+#card {
+    margin: auto;
+    padding: 10px;
+    border: 3px solid green;
+    width: 300px;
+    text-align: center;
+    border-radius: 5px;
+}
+#container {
+    text-align: center;
+}
