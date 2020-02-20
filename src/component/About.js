@@ -1,4 +1,5 @@
 import React from "react";
+
 class About extends React.Component {
   render = () => (
     <div className="container mt-2">
@@ -6,4 +7,5 @@ class About extends React.Component {
     </div>
   );
 }
+
 export default About;

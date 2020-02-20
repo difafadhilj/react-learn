@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Col } from "reactstrap";
-import Navigation from "../components/Navigation";
+import Navigation from "../component/Navigation";
 
 const Main = props => {
   return (

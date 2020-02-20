@@ -21,8 +21,7 @@ export default function MyForm() {
                 required: "This fields is required",
                 minLength: {
                   value: 3,
-                  message:
-                    "This field is required max length 3 characters length"
+                  message: "This field is required 3 characters minimum length"
                 }
               })}
             />
