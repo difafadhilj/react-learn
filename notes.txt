@@ -1,0 +1,25 @@
+Component bisa class, bisa function. Namun, class memiliki beberapa hal dibanding function.
+
+Props adalah argumen fungsi. Props dimasukkan dalam element HTML.
+
+State adalah properti milik Component. Jangan rubah state secara langsung, pake fungsi 
+this.setState(). Apabila state diubah, maka component tersebut akan dirender ulang.
+
+Masing-masing komponen di react mempunyai lifecycle yang bisa dimanipulasi dan dimodifikasi selama berada dalam 3 fase : 
+
+1. Mounting : Meletakkan elemen kedalam DOM
+
+React mempunyai built-in methods yang akan dipanggil secara berurutan selama dalam fase mounting(Meletakkan elemen kedalam DOM) component, yaitu : 
+
+    I. constructor() ::: Pertama dipanggil sebelum yang lain. Dipanggil setiap membuat komponen
+
+    II. getDerivedStateFromProps() ::: Dipanggil tepat sebelum merender elemen di DOM
+    III. render() => Wajib
+    IIII. componentDidMount()
+
+Note : render() selalu dipanggil, yang lain opsional (Akan dipanggil jika kita mendefinisikan)
+
+
+2. Updating :
+3. Unmounting
+
