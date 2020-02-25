@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 function DeleteBook(props) {
   const id = props.match.params.id;
@@ -13,11 +12,7 @@ function DeleteBook(props) {
     alert(err);
   }
 
-  return (
-    <div>
-      <div>Success</div>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default DeleteBook;

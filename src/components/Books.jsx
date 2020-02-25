@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import axios from "axios";
 
 function Books(props) {
@@ -7,8 +7,12 @@ function Books(props) {
 
   useMemo(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:4000/books/" + id);
-      setData([result.data]);
+      const result = await axios("http://localhost:8080/books/" + id, {
+        headers: {
+          Authorization: window.sessionStorage.getItem("token")
+        }
+      });
+      setData([result.data.book]);
     };
     try {
       fetchData();
@@ -20,26 +24,31 @@ function Books(props) {
   let no = 1;
 
   return (
-    <table className="table table-bordered">
-      <thead>
-        <tr>
-          <td>No.</td>
-          <td>Title</td>
-          <td>Author</td>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, id) => (
-          <tr key={id}>
-            <td>{no++}</td>
-            <td>
-              <a>{item.title}</a>
-            </td>
-            <td>{item.author}</td>
+    <React.Fragment>
+      <a href="/" className="btn btn-primary mb-5">
+        Kembali
+      </a>
+      <table className="table table-bordered">
+        <thead>
+          <tr>
+            <td>No.</td>
+            <td>Title</td>
+            <td>Author</td>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item, id) => (
+            <tr key={id}>
+              <td>{no++}</td>
+              <td>
+                <a>{item.title}</a>
+              </td>
+              <td>{item.author}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </React.Fragment>
   );
 }
 

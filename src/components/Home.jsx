@@ -5,8 +5,12 @@ function Home() {
   const [data, setData] = useState([]);
   useMemo(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:4000/books");
-      setData(result.data);
+      const result = await axios.get("http://localhost:8080/books", {
+        headers: {
+          Authorization: window.sessionStorage.getItem("token")
+        }
+      });
+      setData(result.data.book);
     };
     try {
       fetchData();
@@ -14,34 +18,32 @@ function Home() {
       alert(err);
     }
   }, []);
-
   let no = 1;
 
+  if (window.sessionStorage.getItem("role") !== "USER")
+    return <h1>Silahkan Login dahulu</h1>;
+
   return (
-    <table className="table table-bordered">
+    <table className="table">
       <thead>
         <tr>
           <td>No.</td>
           <td>Title</td>
           <td>Author</td>
-          <td>Operation</td>
         </tr>
       </thead>
       <tbody>
         {data.map((item, id) => (
           <tr key={id}>
-            <td>
-              <a href={"http://localhost:3000/books/" + item._id}>{no++}</a>
-            </td>
+            <td>{no++}</td>
             <td>{item.title}</td>
             <td>{item.author}</td>
             <td>
-              <a href={"http://localhost:3000/EditBook/" + item._id}>
-                <button className="btn btn-success">Edit</button>
-              </a>
-
-              <a href={"http://localhost:3000/DeleteBook/" + item._id}>
-                <button className="btn btn-danger">Delete</button>
+              <a
+                className="btn btn-success"
+                href={"http://localhost:3000/books/" + item.id}
+              >
+                Lihat
               </a>
             </td>
           </tr>

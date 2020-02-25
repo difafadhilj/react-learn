@@ -16,18 +16,26 @@ class EditBook extends React.Component {
 
   componentDidMount = async () => {
     let id = this.props.match.params.id;
-    const result = await axios.get("http://localhost:4000/books/" + id);
-    this.setState(result.data);
-    console.log(result.data);
-    console.log(this.state);
+    const result = await axios.get("http://localhost:8080/books/" + id, {
+      headers: {
+        Authorization: window.sessionStorage.getItem("token")
+      }
+    });
+    this.setState(result.data.book);
+    console.log(window.sessionStorage.getItem("token"));
   };
 
   handleSubmit = async e => {
     e.preventDefault();
     let id = this.props.match.params.id;
     const result = await axios.put(
-      "http://localhost:4000/books/" + id,
-      this.state
+      "http://localhost:8080/books/" + id,
+      this.state,
+      {
+        headers: {
+          Authorization: window.sessionStorage.getItem("token")
+        }
+      }
     );
     result.status === 200
       ? alert("Data Updated Successfully!")

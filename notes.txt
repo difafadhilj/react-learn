@@ -23,3 +23,13 @@ Note : render() selalu dipanggil, yang lain opsional (Akan dipanggil jika kita m
 2. Updating :
 3. Unmounting
 
+
+
+
+
+
+
+User :
+- Home => /
+- Book details => /books
+- 

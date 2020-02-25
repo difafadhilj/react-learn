@@ -9,6 +9,8 @@ import EditBook from "./components/EditBook";
 import DeleteBook from "./components/DeleteBook";
 import Notfound from "./components/NotFound";
 import Main from "./components/layouts/Main";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 const App = props => {
   return (
@@ -22,6 +24,8 @@ const App = props => {
             <Route path="/EditBook/:id" component={EditBook} />
             <Route path="/inputBook" component={InputBook} />
             <Route path="/about" component={About} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
             <Route component={Notfound} />
           </Switch>
         </Main>
