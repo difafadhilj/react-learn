@@ -22,7 +22,6 @@ class EditBook extends React.Component {
       }
     });
     this.setState(result.data.book);
-    console.log(window.sessionStorage.getItem("token"));
   };
 
   handleSubmit = async e => {
@@ -37,9 +36,8 @@ class EditBook extends React.Component {
         }
       }
     );
-    result.status === 200
-      ? alert("Data Updated Successfully!")
-      : alert("Failed!");
+    console.log(result);
+    result.status === 201 ? alert("Success") : alert("Failed!");
   };
 
   updateField = e => {
@@ -47,9 +45,11 @@ class EditBook extends React.Component {
   };
 
   render() {
+    if (window.sessionStorage.getItem("role") !== "ADMIN")
+      return <h1>Requided admin previllege</h1>;
     return (
       <div>
-        <h1>Adding new book</h1>
+        <h1>Edit a book</h1>
         <form onSubmit={this.handleSubmit}>
           <label for="title">Title :</label>
           <input

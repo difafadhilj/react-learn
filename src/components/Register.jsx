@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-function Login() {
+function Register() {
+  const history = useHistory();
   const [form, setValues] = useState({
     name: "",
     username: "",
@@ -22,11 +24,12 @@ function Login() {
       });
 
       if (result.status === 201) {
-        alert("Register sucessfuly!");
+        history.push("/login");
       } else {
         throw new Error("Register failed!");
       }
     } catch (err) {
+      alert("Register Failed");
       console.log(err);
     }
   };
@@ -67,7 +70,7 @@ function Login() {
           id="email"
           value={form.email}
           className="form-control"
-          type="text"
+          type="email"
           name="email"
           onChange={updateField}
         />
@@ -77,7 +80,7 @@ function Login() {
           id="password"
           value={form.password}
           className="form-control"
-          type="text"
+          type="password"
           name="password"
           onChange={updateField}
         />
@@ -87,7 +90,7 @@ function Login() {
           id="confirm_password"
           value={form.confirm_password}
           className="form-control"
-          type="text"
+          type="password"
           name="confirm_password"
           onChange={updateField}
         />
@@ -98,4 +101,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

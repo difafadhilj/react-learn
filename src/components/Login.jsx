@@ -20,13 +20,18 @@ function Login() {
 
       window.sessionStorage.setItem("role", result.data.role);
       window.sessionStorage.setItem("token", result.data.accessToken);
+      window.sessionStorage.setItem("userId", result.data.id);
 
       if (result.status === 200) {
-        history.push("/");
+        if (result.data.role === "ADMIN") {
+          history.push("/admin");
+        } else {
+          history.push("/");
+        }
       }
     } catch (err) {
-      console.log("Tidak masuk");
       console.log(err);
+      alert("Login gagal");
     }
   };
 
@@ -57,7 +62,7 @@ function Login() {
           id="password"
           value={form.password}
           className="form-control"
-          type="text"
+          type="password"
           name="password"
           onChange={updateField}
         />

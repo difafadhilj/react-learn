@@ -21,7 +21,30 @@ function Home() {
   let no = 1;
 
   if (window.sessionStorage.getItem("role") !== "USER")
-    return <h1>Silahkan Login dahulu</h1>;
+    return (
+      <React.Fragment>
+        <div className="container mb-5" style={{ textAlign: "center" }}>
+          <h1>Selamat Datang di Library Library</h1>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <div className="jumbotron" style={{ textAlign: "center" }}>
+              <h3>Anda menjadi pintar</h3>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="jumbotron" style={{ textAlign: "center" }}>
+              <h3>Anda menjadi pintar</h3>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="jumbotron" style={{ textAlign: "center" }}>
+              <h3>Anda menjadi pintar</h3>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
 
   return (
     <table className="table">
