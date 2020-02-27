@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import Moment from "react-moment";
+import moment from "moment";
 
 class EditBook extends React.Component {
   constructor(props) {
@@ -21,6 +23,7 @@ class EditBook extends React.Component {
         Authorization: window.sessionStorage.getItem("token")
       }
     });
+    console.log(result);
     this.setState(result.data.book);
   };
 
@@ -45,6 +48,7 @@ class EditBook extends React.Component {
   };
 
   render() {
+    let date = new Date(this.state.published_date);
     if (window.sessionStorage.getItem("role") !== "ADMIN")
       return <h1>Requided admin previllege</h1>;
     return (
@@ -61,7 +65,6 @@ class EditBook extends React.Component {
             name="title"
             onChange={this.updateField}
           />
-
           <label for="author">Author :</label>
           <input
             id="author"
@@ -71,7 +74,6 @@ class EditBook extends React.Component {
             name="author"
             onChange={this.updateField}
           />
-
           <label for="language">Language :</label>
           <input
             id="language"
@@ -81,7 +83,6 @@ class EditBook extends React.Component {
             name="language"
             onChange={this.updateField}
           />
-
           <label for="pages">Pages :</label>
           <input
             id="pages"
@@ -95,13 +96,12 @@ class EditBook extends React.Component {
           <label for="published_date">Published date :</label>
           <input
             id="published_date"
-            value={this.state.published_date}
+            value={date}
             className="form-control"
-            type="date"
+            type="text"
             name="published_date"
             onChange={this.updateField}
           />
-
           <label for="publisher_id">Publisher Id :</label>
           <input
             id="publisher_id"
@@ -111,7 +111,6 @@ class EditBook extends React.Component {
             name="publisher_id"
             onChange={this.updateField}
           />
-
           <input type="submit" className="btn btn-primary mt-3" />
         </form>
       </div>

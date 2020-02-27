@@ -6,8 +6,8 @@ function Books(props) {
   const [books, setOrder] = useState([]);
   let id = props.match.params.id;
 
-  const pinjam = () => {
-    const fetchData = async () => {
+  const pinjam = async () => {
+    try {
       const result = await axios.post(
         "http://localhost:8080/orders",
         { id },
@@ -17,11 +17,11 @@ function Books(props) {
           }
         }
       );
-      if (result.status === 201) alert(result.data.status);
-      setOrder([result.data.book]);
-    };
-    try {
-      fetchData();
+      if (result.status === 201) {
+        alert(result.data.status);
+        setOrder([result.data.book]);
+        window.location.assign("/getOrder");
+      }
     } catch (err) {
       alert(err);
     }

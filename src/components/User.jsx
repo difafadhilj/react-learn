@@ -3,6 +3,7 @@ import axios from "axios";
 
 function User() {
   const [data, setData] = useState([]);
+  let role = "";
 
   useMemo(() => {
     const fetchData = async () => {
@@ -12,6 +13,10 @@ function User() {
         }
       });
       setData(result.data.user);
+      for (let index = 0; index < result.data.user.length; index++) {
+        role += result.data.user[index].roles[0].name;
+        break;
+      }
     };
     try {
       fetchData();
@@ -21,8 +26,9 @@ function User() {
   }, []);
 
   let no = 1;
-  if (window.sessionStorage.getItem("role") !== "ADMIN")
+  if (window.sessionStorage.getItem("role") !== "ADMIN") {
     return <h1>Requided admin previllege</h1>;
+  }
   return (
     <React.Fragment>
       <table className="table">
@@ -42,11 +48,6 @@ function User() {
                 <a>{item.name}</a>
               </td>
               <td>{item.email}</td>
-              <td>
-                <a href="http://" className="btn btn-primary">
-                  Promote to admin
-                </a>
-              </td>
             </tr>
           ))}
         </tbody>

@@ -1,30 +1,8 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
 
-function Order(props) {
+function Order() {
   const [data, setData] = useState([]);
-  let id = props.match.params.id;
-
-  //   const addOrder = () => {
-  //     const fetchData = async () => {
-  //       const result = await axios.post(
-  //         "http://localhost:8080/orders",
-  //         { id: id },
-  //         {
-  //           headers: {
-  //             Authorization: window.sessionStorage.getItem("token")
-  //           }
-  //         }
-  //       );
-  //       console.log(result);
-  //       // setData([result.data.book]);
-  //     };
-  //     try {
-  //       fetchData();
-  //     } catch (err) {
-  //       alert(err);
-  //     }
-  //   };
 
   useMemo(() => {
     const fetchData = async () => {
@@ -44,15 +22,17 @@ function Order(props) {
   }, []);
 
   let no = 1;
-  if (window.sessionStorage.getItem("role") !== "ADMIN")
+  if (window.sessionStorage.getItem("role") !== "ADMIN") {
     return <h1>Requided admin previllege</h1>;
+  }
+
   return (
     <React.Fragment>
       <table className="table">
         <thead>
           <tr>
             <td>No.</td>
-            <td>name</td>
+            <td>Name</td>
           </tr>
         </thead>
         <tbody>

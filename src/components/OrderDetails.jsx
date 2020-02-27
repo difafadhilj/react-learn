@@ -22,8 +22,22 @@ function OrderDetails(props) {
   }, []);
 
   let no = 1;
-  if (window.sessionStorage.getItem("role") !== "ADMIN")
+  if (window.sessionStorage.getItem("role") !== "ADMIN") {
     return <h1>Requided admin previllege</h1>;
+  }
+  if (data.length === 0) {
+    return (
+      <>
+        <a
+          href="http://localhost:3000/admin/order"
+          className="btn btn-primary mb-5"
+        >
+          Kembali
+        </a>
+        <h1>This user don't have any order!</h1>
+      </>
+    );
+  }
   return (
     <React.Fragment>
       <a href="/admin/order" className="btn btn-primary mb-5">
