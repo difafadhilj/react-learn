@@ -19,33 +19,31 @@ import DeleteBook from "./components/DeleteBook";
 import Admin from "./components/Admin.jsx";
 import AdminBooks from "./components/adminBooks";
 
-const App = props => {
+const App = () => {
   return (
     <Router>
-      <Switch>
-        <Main>
-          <Switch>
-            {/* ADMIN */}
-            <Route path="/admin/DeleteBook/:id" component={DeleteBook} />
-            <Route path="/admin/EditBook/:id" component={EditBook} />
-            <Route path="/admin/inputBook" component={InputBook} />
-            <Route path="/admin/books" component={AdminBooks} />
-            <Route path="/admin/user" component={User} />
-            <Route path="/admin/order" component={Order} />
-            <Route path="/admin/OrderDetails/:id" component={OrderDetails} />
-            <Route path="/admin" component={Admin} />
-            {/* USER */}
-            <Route exact path="/" component={Home} />
-            <Route path="/books/:id" component={Books} />
-            <Route path="/about" component={About} />
-            <Route path="/login" component={Login} />
-            <Route path="/getOrder" component={getOrder} />
-            <Route path="/register" component={Register} />
-            {/* NOTFOUND */}
-            <Route component={Notfound} />
-          </Switch>
-        </Main>
-      </Switch>
+      <Main>
+        <Switch>
+          {/* ADMIN */}
+          <Route path="/admin/DeleteBook/:id" component={DeleteBook} />
+          <Route path="/admin/EditBook/:id" component={EditBook} />
+          <Route path="/admin/inputBook" component={InputBook} />
+          <Route path="/admin/books" component={AdminBooks} />
+          <Route path="/admin/user" component={User} />
+          <Route path="/admin/order" component={Order} />
+          <Route path="/admin/OrderDetails/:id" component={OrderDetails} />
+          <Route path="/admin" component={Admin} />
+          {/* USER */}
+          <Route exact path="/" component={Home} />
+          <Route path="/books/:id" component={Books} />
+          <Route path="/about" component={About} />
+          <Route path="/login" component={Login} />
+          <Route path="/getOrder" component={getOrder} />
+          <Route path="/register" component={Register} />
+          {/* NOTFOUND */}
+          <Route component={Notfound} />
+        </Switch>
+      </Main>
     </Router>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
 
-function Books(props) {
+function GetOrderById() {
   const [data, setData] = useState([]);
   let id = window.sessionStorage.getItem("userId");
 
@@ -12,7 +12,6 @@ function Books(props) {
           Authorization: window.sessionStorage.getItem("token")
         }
       });
-      console.log(result);
       setData(result.data.user.books);
     };
     try {
@@ -56,4 +55,4 @@ function Books(props) {
   );
 }
 
-export default Books;
+export default GetOrderById;

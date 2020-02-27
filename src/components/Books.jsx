@@ -3,21 +3,22 @@ import axios from "axios";
 
 function Books(props) {
   const [data, setData] = useState([]);
+  const [books, setOrder] = useState([]);
   let id = props.match.params.id;
 
   const pinjam = () => {
     const fetchData = async () => {
       const result = await axios.post(
         "http://localhost:8080/orders",
-        { id: id },
+        { id },
         {
           headers: {
             Authorization: window.sessionStorage.getItem("token")
           }
         }
       );
-      console.log(result);
-      // setData([result.data.book]);
+      if (result.status === 201) alert(result.data.status);
+      setOrder([result.data.book]);
     };
     try {
       fetchData();

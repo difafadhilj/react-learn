@@ -33,7 +33,7 @@ function Order(props) {
           Authorization: window.sessionStorage.getItem("token")
         }
       });
-      console.log(result.data.user);
+      console.log(result.data);
       setData(result.data.user);
     };
     try {

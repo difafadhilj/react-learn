@@ -51,6 +51,7 @@ class EditBook extends React.Component {
       <div>
         <h1>Edit a book</h1>
         <form onSubmit={this.handleSubmit}>
+          <div className="container"></div>
           <label for="title">Title :</label>
           <input
             id="title"

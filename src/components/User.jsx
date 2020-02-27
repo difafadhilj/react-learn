@@ -31,6 +31,7 @@ function User() {
             <td>No.</td>
             <td>Name</td>
             <td>Email</td>
+            <td></td>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +42,11 @@ function User() {
                 <a>{item.name}</a>
               </td>
               <td>{item.email}</td>
+              <td>
+                <a href="http://" className="btn btn-primary">
+                  Promote to admin
+                </a>
+              </td>
             </tr>
           ))}
         </tbody>

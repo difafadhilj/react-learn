@@ -37,8 +37,8 @@ User :
 - Getbyid, add Order
 
 Admin : 
-- CRUD Buku
-- get all User
+- CRUD Buku (DONE)
+- get all User (DONE)
 - Get all, getbyid, add Order
 
 

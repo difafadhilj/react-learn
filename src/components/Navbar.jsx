@@ -67,7 +67,7 @@ const Navigation = () => {
           <Nav className="mr-auto" navbar>
             <NavItem>
               <NavLink to="/admin" tag={RRNavLink}>
-                home
+                Home
               </NavLink>
             </NavItem>
             <NavItem>
